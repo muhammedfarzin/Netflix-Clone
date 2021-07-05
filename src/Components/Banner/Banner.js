@@ -10,6 +10,7 @@ function Banner() {
     useEffect(() => {
         axios.get(`trending/all/week?api_key=${constants.API_KEY}&language=en-US`).then((response)=>{
             setMovie(response.data.results[0])
+            console.log(response.data.results[0])
         })
     }, [])
 
@@ -26,7 +27,7 @@ function Banner() {
     return (
         <div className='banner' style={{backgroundImage:`url(${movie ? constants.imageUrl+movie.backdrop_path : ''})`}}>
             <div className="content">
-                <h1 className="title">{movie ? movie.original_name : ''}</h1>
+                <h1 className="title">{movie ? movie.original_title : ''}</h1>
                 <div className="banner_buttons">
                     <button onClick={()=>handleMovie(movie.id)} className="button">Play</button>
                     <button className="button">My List</button>

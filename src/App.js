@@ -11,7 +11,6 @@ import { Animated } from 'react-animated-css'
 function App() {
   const { urlId } = useContext(urlIdContext)
   const {showPreview}=useContext(showPreviewContext)
-  console.log(urlId);
   return (
     <div className="App">
       {urlId && <Animated animationInDuration={300} animationOutDuration={300} isVisible={showPreview}>
