@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from '../../axios'
 import constants from '../../constants/constants'
-import { urlIdContext } from '../../store/Context'
+import { showPreviewContext, urlIdContext } from '../../store/Context'
 import './Banner.css'
 function Banner() {
     const {setUrlId}=useContext(urlIdContext)
+    const {setShowPreview}=useContext(showPreviewContext)
 
     const [movie,setMovie]=useState()
     useEffect(() => {
@@ -18,6 +19,7 @@ function Banner() {
         axios.get(`movie/${id}/videos?api_key=${constants.API_KEY}&language=en-US`).then(response=>{
             if(response.data.results.length!==0){
                 setUrlId(response.data.results[0].key)
+                setShowPreview(true)
             }else{
                 alert('Not Available')
             }

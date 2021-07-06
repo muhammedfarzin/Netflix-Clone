@@ -18,7 +18,6 @@ function RowPost(props) {
             alert('Something went wrong')
         })
     }, [props])
-    movies.map((obj)=>setMovies)
     
     const handleMovie=(id)=>{
         axios.get(`movie/${id}/videos?api_key=${constants.API_KEY}&language=en-US`).then(response=>{
